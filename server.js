@@ -18,7 +18,13 @@ server.get('/', (req, res) => {
 })
 
 server.get('/aes-256', (req, res) => {
-    res.sendFile(__dirname + '/pages/AES-256.html')
+    const encryption = './encryption'
+    data = {
+        key: '12345678123456781234567812345678',
+        plainTextMessage: "",
+        encryptedMessage: ""
+    }
+    res.render(encryption, data)
 })
 
 module.exports = server;

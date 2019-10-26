@@ -1,0 +1,50 @@
+{{>navbar}}
+<section class="header">
+    <div class="header-text">
+        <h1>AES 256 Bit Encryption</h1>
+    </div>
+</section>
+
+<section id="plainTextInput">
+    <form method="POST" action="/aes-256">
+        <div class="form-group">
+            <label for="secretKey">Secret Key:</label>
+            <input class="form-control"value="{{key}}" name="secretKey">
+        </div>
+        <div class="form-group">
+            <label for="plainText" class="form-item">Message to be encoded:</label>
+            <input class="form-control" value="" name="plainText" placeholder="Write your message here.">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-light" type="submit" name="encrypt" value="Encrypt!">Encrypt!</button>
+        </div>
+    </form>
+</section>
+
+<section class="display-message">
+    <div>
+        <p>Encrypted Message: {{encryptedMessage}}</p>
+    </div>
+</section>
+    
+<section id="encryptedTextInput">
+    <form method="POST" action="/aes-256">
+        <div class="form-group">
+            <label for="secretKey" class="form-item">Secret Key:</label>
+            <input class="form-control" value="{{key}}" name="secretKey">
+        </div>
+        <div>
+            <label for="encryptedText" class="form-item">Message to be decrpyted:</label>
+            <input class="form-control" value="{{encryptedMessage}}" name="encryptedText">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-light" type="submit" name="decrypt" value="Decrpyt!">Decrypt!</button>
+        </div>
+    </form>
+</section>
+
+<section class="display-message">
+    <div>
+        <p>Decrypted Message: {{plainTextMessage}}</p>
+    </div>
+</section>
