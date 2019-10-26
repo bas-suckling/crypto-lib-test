@@ -17,7 +17,7 @@ server.get('/', (req, res) => {
     res.render(home)
 })
 
-server.get('/aes-256', (req, res) => {
+server.get('/encryption-demo', (req, res) => {
     const encryption = './encryption'
     data = {
         key: '12345678123456781234567812345678',
@@ -26,5 +26,18 @@ server.get('/aes-256', (req, res) => {
     }
     res.render(encryption, data)
 })
+
+server.get('/key-exchange', (req, res) => {
+    const key_exchange = './key-exchange'
+    res.render(key_exchange)
+})
+
+
+
+
+
+
+
+
 
 module.exports = server;

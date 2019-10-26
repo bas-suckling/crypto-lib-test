@@ -24,3 +24,7 @@ canvas {
     z-index: -1;
     position: absolute;
 }
+
+#welcome {
+    font-size: 2rem;
+}
