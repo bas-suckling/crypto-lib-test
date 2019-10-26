@@ -10,7 +10,7 @@ function encrypt(text) {
     let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
     let encrypted = cipher.update(text);
     encrypted = Buffer.concat([encrypted, cipher.final()]);
-    return { secretMessage: text, iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') };
+    return encrypted.toString('hex') ;
 }
 
 function decrypt(text) {
@@ -30,8 +30,6 @@ function generateIV() {
     return iv = crypto.randomBytes(16)
 }
 
-console.log(encrypt("test encryption"))
-
 
 module.exports = {
     encrypt: encrypt,
@@ -40,4 +38,4 @@ module.exports = {
     generateIV: generateIV
 }
 
-
+// document.getElementById("encryptBtn").addEventListener("click", encrypt(document.getElementById("plainTextMsg")))

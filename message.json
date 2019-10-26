@@ -1,6 +1,6 @@
 {
     "key": "12345678123456781234567812345678",
     "iv": "1234567812345678",
-    "messagePlainText": "",
+    "messagePlainText": "This is a test message to be encrypted",
     "messageEncrypted": ""
 }
