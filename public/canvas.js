@@ -11,7 +11,7 @@ var letters = 'アイウエオカガキギクグケゲコゴサザシジスズ�
 letters = letters.split('');
 
 // Setting up the columns
-var fontSize = 12,
+var fontSize = 13,
     columns = canvas.width / fontSize;
 
 // Setting up the drops
@@ -20,9 +20,10 @@ for (var i = 0; i < columns; i++) {
   drops[i] = 1;
 }
 
+
 // Setting up the draw function
 function draw() {
-  ctx.fillStyle = 'rgba(0, 0, 0, .05)';
+  ctx.fillStyle = 'rgba(0, 0, 0, .03)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   for (var i = 0; i < drops.length; i++) {
     var text = letters[Math.floor(Math.random() * letters.length)];
@@ -33,9 +34,12 @@ function draw() {
       drops[i] = 0;
     }
   }
+
 }
 
+
 // Loop the animation
-setInterval(draw, 50);
+
+setInterval(draw, 70);
 
 //ctx.fillStyle = '#0f0'

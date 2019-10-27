@@ -11,6 +11,7 @@ section {
 
 .display-message {
     color:white;
+    word-wrap: break-word;
     
 }
 
