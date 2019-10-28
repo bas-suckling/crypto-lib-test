@@ -3,18 +3,19 @@
     <div class="header-text">
         <h1>Decryption</h1>
         <h2>Implementation of decryption using AES-256 from the Node.js crypto library</h2>
+        <h4>Secret key is hashed using SHA-256</h4>
     </div>
 </section>
 
 <section id="encryptedTextInput">
-    <form method="POST" action="/decryption-demo">
+    <form method="POST" action="/decryption">
         <div class="form-group">
             <label for="secretKey" class="form-item">Secret Key:</label>
-            <input class="form-control" value="{{key}}" name="secretKey">
+            <input class="form-control" value="{{key}}" name="key" placeholder="Write a secret key here.">
         </div>
         <div class="form-group">
             <label for="encryptedText" class="form-item">Message to be decrpyted:</label>
-            <input class="form-control" value="{{encryptedMessage}}" name="encryptedText">
+            <input class="form-control" value="{{encryptedMessage}}" name="encryptedText" placeholder="Write your message here.">
         </div>
         <div class="form-group">
             <button id="decryptBtn" class="btn btn-light" type="submit" name="decrypt" value="Decrpyt!">Decrypt!</button>
@@ -24,6 +25,8 @@
 
 <section class="display-message">
     <div>
+        <p>Secret Key: {{key}}</p>
+        <p>Hashed Key: {{hashKey}}</p>
         <p>Encrypted Message: {{encryptedMessage}}</p>
         <p>Decrypted Message: {{plainTextMessage}}</p>
     </div>

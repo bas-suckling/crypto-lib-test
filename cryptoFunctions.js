@@ -1,14 +1,10 @@
 //https://codeforgeek.com/encrypt-and-decrypt-data-in-node-js/ - source of implementation
-
 const crypto = require('crypto');
 
-
-let key = '12345678123456781234567812345678' //must be a 32bit string
+// let key = '12345678123456781234567812345678' //must be a 32bit string
 let iv = '1234567812345678' // must be a 16 bit string
 
-
-
-function encrypt(text) {
+function encrypt(text, key) {
         //takes a message as string and returns an object containing the initialisation vector as a hex string, and the encoded message as a hex string.
     let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv)
     let encrypted = cipher.update(text)
@@ -16,7 +12,7 @@ function encrypt(text) {
     return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') }
 }
 
-function decrypt(text) {
+function decrypt(text, key) {
     //takes an ecrypted hex string and returns the decrypted message as a string
     let ivHex = iv.toString('hex')
     let encryptedText = Buffer.from(text, 'hex')
@@ -26,14 +22,12 @@ function decrypt(text) {
     return decrypted.toString()
 }
 
-// function decrypt(text) {
-//   let iv = Buffer.from(text.iv, 'hex')
-//   let encryptedText = Buffer.from(text.encryptedData, 'hex')
-//   let decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(key), iv)
-//   let decrypted = decipher.update(encryptedText)
-//   decrypted = Buffer.concat([decrypted, decipher.final()])
-//   return decrypted.toString()
-// }
+function hash(text) {
+    hashKey =  crypto.createHash('sha1')
+    .update(text)
+    .digest('hex');
+    return hashKey.substring(0, 32)
+}
 
 
 //initialisation vector and key are hard coded, but can be generated using the functions below
@@ -50,7 +44,8 @@ module.exports = {
     encrypt: encrypt,
     decrypt: decrypt,
     generateKey: generateKey,
-    generateIV: generateIV
+    generateIV: generateIV,
+    hash: hash
 }
 
 

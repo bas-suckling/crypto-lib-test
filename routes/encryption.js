@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const aes_256 = require('../aes-256')
+const cryptoFunctions = require('../cryptoFunctions')
 
 
 router.get('/', (req, res) => {
     data = {
         iv: '1234567812345678',
-        key: '12345678123456781234567812345678',
+        key: '',
         plainTextMessage: "",
         encryptedMessage: ""
     }
@@ -14,12 +14,15 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    let plainTextMessage = req.body.plainText
-    let encryptedMessage = aes_256.encrypt(plainTextMessage)
+    let plainTextMessage = req.body.plainText;
+    let key = req.body.key;
+    let hashKey = cryptoFunctions.hash(key)
+    let encryptedMessage = cryptoFunctions.encrypt(plainTextMessage, hashKey)
    
     const updatedData = {
         iv: '1234567812345678',
-        key: '12345678123456781234567812345678',
+        hashKey: hashKey,
+        key: key,
         plainTextMessage: plainTextMessage,
         encryptedMessage: encryptedMessage.encryptedData        
     }
